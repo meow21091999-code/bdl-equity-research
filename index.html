@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bharat Dynamics (BDL) — Equity Research | VERIDIAN</title>
+<title>VERIDIAN — Equity Research Library</title>
 <style>
   :root{
     --ink:#12161c; --muted:#5b6675; --line:#e3e7ee; --bg:#f6f7f9; --card:#ffffff;
@@ -13,389 +13,61 @@
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.55;font-size:15px}
-  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
-  header.top{background:linear-gradient(135deg,#0f3d6e,#123b63 40%,#1c2b3a);color:#fff;border-radius:14px;padding:26px 28px;margin-bottom:22px}
-  header.top h1{margin:0 0 4px;font-size:26px;letter-spacing:.2px}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 20px 90px}
+  header.top{background:linear-gradient(135deg,#0f3d6e,#123b63 40%,#1c2b3a);color:#fff;border-radius:14px;padding:30px 30px;margin-bottom:26px}
+  header.top .brand{font-size:13px;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:8px}
+  header.top h1{margin:0 0 6px;font-size:28px;letter-spacing:.2px}
   header.top .sub{opacity:.9;font-size:14px}
-  header.top .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-  header.top .meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;font-size:12.5px}
-  h2{font-size:20px;margin:34px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line);color:var(--accent)}
-  h3{font-size:16px;margin:20px 0 6px}
-  p{margin:9px 0}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
-  .verdict{background:#fff;border:1px solid var(--line);border-left:6px solid var(--red);border-radius:12px;padding:20px 22px;margin:6px 0 8px}
-  .verdict .head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .pill{display:inline-block;padding:5px 14px;border-radius:999px;font-weight:700;font-size:15px;color:#fff;background:var(--red)}
-  .pill.watch{background:var(--amber)}
-  .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;border:1px solid var(--line);color:var(--muted);background:#fbfcfd;vertical-align:middle}
-  .tag.v{color:#0b5f3a;border-color:#bfe3d1;background:#eefaf3}
-  .tag.s{color:#8a5a00;border-color:#f0dcb0;background:#fdf6e8}
-  .tag.d{color:#254a7a;border-color:#cddcf0;background:#eef3fb}
-  .tag.a{color:#7a2f8a;border-color:#e6cdec;background:#f9eefb}
-  .tag.n{color:#8a1f1f;border-color:#f0c9c9;background:#fbecec}
-  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-  th{background:var(--accent2);color:var(--accent);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
-  tr:last-child td{border-bottom:none}
-  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-  .rate{font-weight:700;padding:2px 9px;border-radius:6px;font-size:12.5px;color:#fff}
-  .rate.green{background:var(--green)} .rate.amber{background:var(--amber)} .rate.red{background:var(--red)}
-  .small{font-size:12.5px;color:var(--muted)}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
-  ul{margin:8px 0 8px 20px;padding:0}
-  li{margin:4px 0}
-  .callout{background:#fdf6e8;border:1px solid #f0dcb0;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px}
-  .danger{background:#fbecec;border:1px solid #f0c9c9}
-  .good{background:#eefaf3;border:1px solid #bfe3d1}
+  h2{font-size:18px;margin:30px 0 12px;color:var(--accent);display:flex;align-items:center;gap:10px}
+  h2 .count{font-size:12px;font-weight:700;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+  .grid{display:grid;grid-template-columns:1fr;gap:14px}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+    text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s,border-color .15s}
+  a.card:hover{box-shadow:0 6px 22px rgba(15,61,110,.10);transform:translateY(-1px);border-color:#cddcf0}
+  .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .tick{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent2);border:1px solid #cddcf0;border-radius:7px;padding:3px 9px;letter-spacing:.03em}
+  .pill{display:inline-block;padding:3px 12px;border-radius:999px;font-weight:700;font-size:12.5px;color:#fff;background:var(--red)}
+  .pill.watch{background:var(--amber)} .pill.buy{background:var(--green)}
+  .card h3{margin:10px 0 4px;font-size:18px}
+  .card .date{font-size:12.5px;color:var(--muted)}
+  .card p{margin:8px 0 0;font-size:14px;color:#2a3542}
+  .card .more{margin-top:12px;font-weight:700;color:var(--accent);font-size:13.5px}
+  .empty{border:1px dashed #cddcf0;border-radius:14px;padding:22px;color:var(--muted);background:#fff;font-size:13.5px}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
-  .kv{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:5px 0}
-  .kv b{font-variant-numeric:tabular-nums}
-  code{background:#eef1f5;padding:1px 5px;border-radius:5px;font-size:12.5px}
-  html{scroll-behavior:smooth}
-  h2{scroll-margin-top:18px}
-  .toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 6px}
-  .toc .toc-h{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px;font-weight:700}
-  .toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 20px}
-  @media(max-width:760px){.toc ol{grid-template-columns:1fr}}
-  .toc a{display:block;padding:5px 9px;border-radius:7px;color:var(--ink);text-decoration:none;font-size:13.5px}
-  .toc a:hover{background:var(--accent2);color:var(--accent)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header class="top">
-  <h1>Bharat Dynamics Limited</h1>
-  <div class="sub">NSE: BDL &nbsp;·&nbsp; BSE: 541143 &nbsp;·&nbsp; ISIN INE171Z01026 &nbsp;·&nbsp; Aerospace &amp; Defence</div>
-  <div class="meta">
-    <span>Mode: New Idea</span>
-    <span>Horizon: 3 years</span>
-    <span>Position size: 0 (none assumed)</span>
-    <span>Basis: standalone</span>
-    <span>Report date: 13 Oct 2026</span>
-    <span>Price: Rs 1,125.90</span>
-    <span>Data confidence: Medium</span>
-  </div>
+  <div class="brand">VERIDIAN</div>
+  <h1>Equity Research Library</h1>
+  <div class="sub">Indian listed markets · NSE / BSE · buy-side coverage of small and mid-cap industrials</div>
 </header>
 
-<div class="verdict">
-  <div class="head"><span class="pill">PASS</span><span class="small">Hard stop triggered: no evidence-backed variant perception (§9)</span></div>
-  <p style="margin-top:12px"><b>Variant-perception thesis:</b> none I can defend. The market (13 analysts, split 6 buy / 5 sell / 2 hold) is already debating the only two questions that matter — will the Rs 26,176 cr order book convert, and will margins recover — and both sides are priced into a stock that has fallen 27% in a year. The one under-discussed point (≈75% of FY26 PBT is treasury income on customer advances; core ROCE is 3.6%) reinforces, not reverses, the bear case.</p>
-  <p><b>Catalyst and timing:</b> Q2 FY27 results, due ~6 Nov 2026 — the first real test of the Akash/Astra Mk-1 revenue ramp. <b>Warning:</b> next results are within 30 days; model and price may be stale around the results season.</p>
-  <div class="grid2" style="margin-top:12px">
-    <div>
-      <div class="kv"><span>Probability-weighted value / share</span><b>≈ Rs 1,240</b></div>
-      <div class="kv"><span>Upside vs price (Rs 1,125.90)</span><b>≈ +10%</b></div>
-      <div class="kv"><span>Bull / Base / Bear value</span><b>Rs 2,266 / Rs 1,178 / Rs 492</b></div>
-      <div class="kv"><span>Probabilities</span><b>25% / 45% / 30%</b></div>
+<h2>Reports <span class="count">1</span></h2>
+<div class="grid">
+
+  <a class="card" href="reports/bdl/">
+    <div class="row">
+      <span class="tick">NSE: BDL</span>
+      <span class="pill">PASS</span>
+      <span class="date">13 Oct 2026 · New Idea · 3-yr horizon</span>
     </div>
-    <div>
-      <div class="kv"><span>Probability of a 30%+ loss</span><b>≈ 30%</b></div>
-      <div class="kv"><span>Payoff asymmetry (needs 2x up vs 30% down)</span><b>FAILS</b></div>
-      <div class="kv"><span>Liquidity</span><b>Ample (ADV ~Rs 90 cr/day)</b></div>
-      <div class="kv"><span>Verdict drivers</span><b>98x trailing P/E; 9.2% EBITDA margin; execution slippage; governance AMBER</b></div>
-    </div>
-  </div>
-  <p class="small" style="margin-top:10px">All forward-model and valuation numbers above are assumption-driven (<span class="tag a">A</span> / <span class="tag d">D</span>), not verified facts.</p>
+    <h3>Bharat Dynamics Limited</h3>
+    <p>A strategically protected, debt-free missile monopoly with the highest order-book coverage in Indian defence (10.7x revenue) — but at 98x trailing earnings, on a 9.2% EBITDA margin and a 3.6% core ROCE, the premium already discounts an execution ramp the company has repeatedly failed to deliver. Hard stop: no evidence-backed variant perception.</p>
+    <div class="more">Read the full report →</div>
+  </a>
+
 </div>
 
-<nav class="toc"><p class="toc-h">Contents</p><ol><li><a href="#1-verdict">1 · Verdict</a></li><li><a href="#2-business-and-moat">2 · Business and moat</a></li><li><a href="#3-industry-and-cycle">3 · Industry and cycle</a></li><li><a href="#4-governance-scorecard">4 · Governance scorecard</a></li><li><a href="#5-financial-quality-10-years">5 · Financial quality (10 years)</a></li><li><a href="#6-forensic-accounting-pass">6 · Forensic accounting pass</a></li><li><a href="#7-industrial-deep-dive">7 · Industrial deep-dive</a></li><li><a href="#8-peer-comparison">8 · Peer comparison</a></li><li><a href="#9-variant-perception-evidence">9 · Variant perception evidence</a></li><li><a href="#10-forward-model">10 · Forward model</a></li><li><a href="#11-valuation">11 · Valuation</a></li><li><a href="#12-macro-and-policy-dependence">12 · Macro and policy dependence</a></li><li><a href="#13-market-structure-and-liquidity">13 · Market structure and liquidity</a></li><li><a href="#14-pre-mortem-and-kill-criteria">14 · Pre-mortem and kill criteria</a></li><li><a href="#15-red-team-short-report">15 · Red-team short report</a></li><li><a href="#16-monitoring-plan-and-decision-journal">16 · Monitoring plan and decision journal</a></li><li><a href="#17-source-log-contradictions-open-questions">17 · Source log, contradictions, open questions</a></li><li><a href="#stage-3-final-audit-15-decision-critical-figures">Stage 3 · Final audit (15 decision-critical figures)</a></li><li><a href="#what-would-change-my-mind">What would change my mind</a></li></ol></nav>
-<h2 id="1-verdict">1 · Verdict</h2>
-<p><b>Pass.</b> BDL is a strategically protected, debt-free monopoly producer of guided missiles with the highest order-book coverage among Indian defence majors (10.7x FY26 revenue). But it converts orders slowly and repeatedly misses its own plans (FY26 revenue −27%), it earns structurally thin margins on fixed-price MoD contracts (EBITDA margin 9.2% in FY26, down from 22.7% in FY24), and three-quarters of its FY26 pre-tax profit is treasury income rather than manufacturing profit. At 98x trailing earnings and ~9.7x book, the premium already discounts a successful execution ramp that the company has not yet demonstrated — and which is gated by imported components it does not control. This is a high-quality franchise at a price that leaves no margin of safety, and I have no differentiated edge over a consensus that is already split on exactly these points.</p>
-
-<h2 id="2-business-and-moat">2 · Business and moat</h2>
-<p>BDL is India's prime production agency for guided missiles — Surface-to-Air (Akash, MR-SAM, VL-SRSAM), Air-to-Air (Astra), Anti-Tank (Milan, Konkurs-M, INVAR, NAG, Helina), torpedoes and countermeasures — sold principally to the Ministry of Defence. It earns money by winning fixed-price production contracts against DRDO-developed designs and recognising revenue on delivery and customer acceptance. It is a government company (President of India 74.93%), with three plants (Kanchanbagh, Bhanur, Visakhapatnam) and ~2,101 employees, adding capacity at Amaravati, Ibrahimpatnam and Jhansi.</p>
-<p>Revenue is disclosed only at company level: MoD is effectively the sole customer, and defence PSUs are exempt from segment reporting, so there is no disclosed product or geography split. FY25 export turnover was Rs 1,270 cr against total revenue of Rs 3,345 cr; FY26 export <i>orders</i> were only ~Rs 417 cr. Exports are small and lumpy.</p>
-<p><b>Moat evidence:</b> BDL is the exclusive production agency for several DRDO missiles (Akash, Konkurs) and has indigenised ~90% of major missiles with a supported vendor network. The moat is a regulatory/strategic monopoly on specific platforms, not a commercial one — BDL does not set prices (contracts are "fixed-contract… with minimal profitability") and depends on DRDO for technical modifications. If BDL disappeared, the Government would have to rebuild missile serial production from scratch, so the moat protects volume, not margin.</p>
-<p><span class="rate amber">AMBER</span> — a genuinely protected franchise with real order visibility, but no pricing power and margin outside the company's control.</p>
-
-<h3>2A · Product and portfolio review</h3>
-<p><b>Catalogue (Reported):</b> SAMs/AAMs (Akash, MR-SAM, VL-SRSAM, Astra), ATGMs (Milan-2T, Konkurs-M, INVAR, NAG, Helina/Dhruvastra, ULPGM), torpedoes, launchers, CMDS, underwater decoys, test/monitoring equipment. Named export candidates: Akash SAM, Light Weight Torpedo, CMDS, Konkurs-M, SAAW, Astra, NAG.</p>
-<ul>
-  <li><b>Revenue by product: NOT DISCLOSED</b> (segment-reporting exemption). No split imputed. Filings say FY26 execution was "led by the Akash and ATGM programmes," with Astra Mk-1 rising from 3QFY27 due to higher import content.</li>
-  <li><b>Product-level economics:</b> <span class="tag n">N</span> — realisation, gross margin, volume per product not disclosed. Only blended material consumption (Rs 1,995.55 cr FY26) and R&amp;D intensity (8.1%) are reported.</li>
-  <li><b>New launches / pipeline:</b> Improved Akash Weapon System — bulk production clearance 27 Mar 2026; Astra Mk-1 First-Off Production Material trials done; Spike LR2 line (with Rafael) commissioned. R&amp;D Rs 198.23 cr (8.1% of sales) vs Rs 222.92 cr (6.7%) prior year.</li>
-  <li><b>Concentration:</b> effectively single-customer (MoD); top-3 product split <span class="tag n">N</span>.</li>
-  <li><b>Competitive position per product:</b> <span class="tag n">N</span> for sourced share. Directional fact: QRSAM is a joint BDL/BEL programme; brokers flag rising private-sector participation in missiles.</li>
-  <li><b>Product-level risks:</b> imported seeker/radar dependence delaying Akash/Astra; higher bought-out content diluting Astra margin; DRDO-dependent modifications (delay makes BDL liable for damages); fixed-price "minimal profitability" contracts.</li>
-</ul>
-<p><b>Single most product-specific risk:</b> the Akash/Astra ramp is gated by imported seekers/radars BDL does not control — and Astra's higher import content is margin-dilutive even when supply arrives.</p>
-<p><span class="rate amber">AMBER</span> — multi-product franchise, but with no disclosed product economics the mix-driven margin recovery cannot be underwritten.</p>
-
-<h3>2B · Suppliers and customers</h3>
-<ul>
-  <li><b>Customers:</b> MoD/Armed Forces is the customer of record; not individually named in documents opened. Named order in the period: <b>HAL</b> — Rs 1,347.71 cr (June 2026) for Helina launchers + CMDS LRUs, executed over 24–60 months. Export cooperation agreement with Indonesia's Republikorp (Astra).</li>
-  <li><b>Customer concentration:</b> effectively single-customer (MoD). Top-5/top-10 split <span class="tag n">N</span>. Government vs private: overwhelmingly government. Export order position ~Rs 417 cr.</li>
-  <li><b>Relationship quality:</b> long-standing exclusive-platform relationships; customer advances of 15–20% of order value finance working capital. Flip side: <b>customer acceptance/inspection delays are the stated cause of revenue slippage</b> (FY26 revenue fall attributed to "shift in the delivery timeline… to meet the extended requirements of customer").</li>
-  <li><b>Suppliers:</b> not named. Imports components under transfer-of-technology and (per an older CRISIL note) does not hedge forex exposure. Indigenised ~90% of major missiles; imports radars/seekers that gate execution. Import material consumed +164% to Rs 290 cr in FY26 while indigenous material fell 14%.</li>
-  <li><b>Related-party counterparties:</b> none identified; no materially significant RPTs, no AOC-2.</li>
-</ul>
-<p><b>Counterparty risk line:</b> the MoD sits on both sides — customer, price-setter, and cause of acceptance delays. The largest concentration risk is a government customer that fixes prices low and accepts deliveries late.</p>
-<p><span class="rate amber">AMBER</span> — captive, credit-risk-free demand is a strength; total customer concentration and demonstrated import dependency keep it off green.</p>
-
-<h2 id="3-industry-and-cycle">3 · Industry and cycle</h2>
-<p>Demand is the strongest it has ever been: the FY27 MoD budget is Rs 7.85 lakh crore (+15.19%), with capital outlay Rs 2.19 lakh crore, capital acquisition Rs 1.85 lakh crore (+~24%), and Rs 1.39 lakh crore (75% of capital acquisition) reserved for domestic industry; DRDO rose to Rs 29,100 cr. Jefferies sees domestic defence capex compounding ~16% and exports ~11% to FY30. This is not an industry-cycle question — it is a share-of-pool and margin question.</p>
-<p>Missile programmes are increasingly contested: BEL leads QRSAM electronics, private players (Solar, Astra, Data Patterns) are moving up the value chain, and brokers flag rising private participation as a long-term BDL risk. BDL's own margins show it is a price-taker: EBITDA margin fell 22.7% (FY24) → 14.1% (FY25) → 9.2% (FY26).</p>
-<p><b>Cycle position:</b> revenue trough (weakest since FY21) with a record order book. Defensible mid-cycle EBITDA margin ~13–16% (not the 20%+ of FY24). Current earnings are trough on both revenue and margin.</p>
-<p><span class="rate amber">AMBER</span> — demand tailwind, but realised margin is structurally compressed and the competitive dynamic is worsening.</p>
-
-<h2 id="4-governance-scorecard">4 · Governance scorecard</h2>
-<table>
-<tr><th>Item</th><th>Finding</th><th>Rating</th></tr>
-<tr><td>Promoter holding / pledge (8 qtrs)</td><td>President of India steady 74.93%; pledge 0% every quarter</td><td><span class="rate green">Clean</span></td></tr>
-<tr><td>Board / committee compliance</td><td>Independent Director tenures lapsed Dec-2024; Audit Committee &amp; NRC suspended 24 Feb 2026; RMC/CSR/SRC suspended 22 Apr 2026; BSE &amp; NSE fines Rs 6,96,200 each (Q4 FY26) and Rs 13,03,900 each (Q1 FY27); company said it would stay non-compliant until Government appointed IDs; three IDs appointed and all committees reconstituted 17 Aug 2026. Q1 FY27 accounts approved with no functioning Audit Committee.</td><td><span class="rate red">Defect</span></td></tr>
-<tr><td>Auditor history</td><td>M/s Tej Raj &amp; Pal (CAG-appointed); FY26 unmodified, no qualification; no resignation. Emphasis-of-matter on Rs 83.27 cr inventory &gt;5 yrs unprovided.</td><td><span class="rate amber">Watch</span></td></tr>
-<tr><td>Related-party transactions</td><td>None material; no AOC-2</td><td><span class="rate green">Clean</span></td></tr>
-<tr><td>Contingent liabilities</td><td>CST job-work dispute Rs 213.10 cr (Telangana HC); service-tax Rs 18.41 cr; small GST</td><td><span class="rate amber">Watch</span></td></tr>
-<tr><td>Capital allocation</td><td>Debt-free; payout 31–43%; capex ~Rs 180–200 cr/yr; R&amp;D intensity 8.1%</td><td><span class="rate green">Clean</span></td></tr>
-</table>
-<p><span class="rate amber">AMBER (leaning RED)</span> — no fraud, no auditor problem, no promoter abuse, no unexplained RPT. But a six-month loss of board/committee compliance, exchange fines, and accounts approved without an Audit Committee is a real defect. A stricter reading could treat the exchange fines as a governance FAIL.</p>
-
-<h2 id="5-financial-quality-10-years">5 · Financial quality (10 years)</h2>
-<table>
-<tr><th>Rs cr (SA)</th><th class="num">FY17</th><th class="num">FY18</th><th class="num">FY19</th><th class="num">FY20</th><th class="num">FY21</th><th class="num">FY22</th><th class="num">FY23</th><th class="num">FY24</th><th class="num">FY25</th><th class="num">FY26</th></tr>
-<tr><td>Sales</td><td class="num">4,887</td><td class="num">4,588</td><td class="num">3,069</td><td class="num">3,105</td><td class="num">1,914</td><td class="num">2,817</td><td class="num">2,489</td><td class="num">2,369</td><td class="num">3,345</td><td class="num">2,442</td></tr>
-<tr><td>EBITDA (ex-OI)</td><td class="num">569</td><td class="num">669</td><td class="num">623</td><td class="num">756</td><td class="num">346</td><td class="num">727</td><td class="num">409</td><td class="num">537</td><td class="num">473</td><td class="num">225</td></tr>
-<tr><td>EBITDA margin</td><td class="num">12%</td><td class="num">15%</td><td class="num">20%</td><td class="num">24%</td><td class="num">18%</td><td class="num">26%</td><td class="num">16%</td><td class="num">23%</td><td class="num">14%</td><td class="num">9%</td></tr>
-<tr><td>PAT</td><td class="num">524</td><td class="num">528</td><td class="num">423</td><td class="num">535</td><td class="num">258</td><td class="num">500</td><td class="num">352</td><td class="num">613</td><td class="num">550</td><td class="num">420</td></tr>
-<tr><td>ROCE (incl OI)</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">24%</td><td class="num">15%</td><td class="num">23%</td><td class="num">19%</td><td class="num">13.8%</td></tr>
-<tr><td>Core ROCE (ex-OI)</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">3.6%</td></tr>
-<tr><td>CFO</td><td class="num">−420</td><td class="num">−342</td><td class="num">84</td><td class="num">504</td><td class="num">1,068</td><td class="num">530</td><td class="num">2,130</td><td class="num">412</td><td class="num">167</td><td class="num">604</td></tr>
-<tr><td>CFO/PAT</td><td class="num">neg</td><td class="num">neg</td><td class="num">0.2</td><td class="num">0.9</td><td class="num">4.1</td><td class="num">1.1</td><td class="num">6.1</td><td class="num">0.7</td><td class="num">0.3</td><td class="num">1.4</td></tr>
-<tr><td>FCF</td><td class="num">−556</td><td class="num">−510</td><td class="num">−5</td><td class="num">447</td><td class="num">1,012</td><td class="num">428</td><td class="num">2,022</td><td class="num">331</td><td class="num">−115</td><td class="num">375</td></tr>
-<tr><td>D/E</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td><td class="num">~0</td></tr>
-</table>
-<p>Debt-free, cash-generative, low-return. Never carried meaningful debt (D/E ~0.001x), interest cover ~30x, 5-yr CFO/PAT 1.58. But returns are mediocre and deteriorating: ROE 10%, ROCE 13.8% only because treasury income is counted — core ROCE 3.6%. Revenue compounded ~−5% over ten years and ~−1% over three. EBITDA margin compressed from a 22–26% range (FY22–24) to 9.2% (FY26). Working capital is very heavy — gross current assets above 651 days.</p>
-<p><span class="rate amber">AMBER</span> — fortress balance sheet, but structurally low and falling returns and flat-to-declining revenue.</p>
-
-<h2 id="6-forensic-accounting-pass">6 · Forensic accounting pass</h2>
-<ul>
-  <li><b>CFO vs PAT:</b> 5-yr cumulative 1.58; FY26 CFO Rs 604 cr &gt; PAT Rs 420 cr. No aggregate red flag, but CFO is volatile with advances/inventory.</li>
-  <li><b>Receivables:</b> fell 55% to Rs 727 cr (109 days) in FY26 — genuine improvement; but FY25 carried a Rs 90 cr ECL provision.</li>
-  <li><b>Related-party loans:</b> none material.</li>
-  <li><b>Other income / PBT:</b> <b>74.6% in FY26</b> (Rs 424 cr vs PBT Rs 568 cr); 46.7% FY25; 43.7% FY24; Q4 FY26 alone 77.4%. Three-quarters of pre-tax profit is treasury income on customer advances — low quality, and it falls as advances are consumed.</li>
-  <li><b>Capitalised expenses:</b> no evidence of aggressive capitalisation; R&amp;D expensed; debt-free. Detailed schedule <span class="tag n">N</span> (AR partial).</li>
-  <li><b>Inventory:</b> +75% to Rs 4,625.64 cr; within it <b>Rs 83.27 cr non-moving &gt;5 yrs, unprovided</b> against the company's own policy (auditor emphasis-of-matter).</li>
-  <li><b>Contingent liabilities:</b> CST dispute Rs 213.10 cr (Telangana HC).</li>
-  <li><b>Auditor remarks:</b> unmodified opinion; EoM on unprovided inventory; FY25 KAM on onerous-contract provisions (~Rs 141 cr).</li>
-  <li><b>Policy changes:</b> labour-code assessment ~Rs 7.04 cr noted; no material policy change identified. Full scan <span class="tag n">N</span>.</li>
-  <li><b>Subsidiary leakage:</b> none — no subsidiaries; two Section-8 associates not consolidated.</li>
-</ul>
-<p><b>Forensic scores:</b></p>
-<ul>
-  <li><b>Beneish M-score:</b> only partly computable — SGI 0.73, DSRI 0.62, GMI 0.49, TATA −0.013. Full eight-variable composite <span class="tag n">N</span> (AR partial). On the variables available, no manipulation signal; the low GMI is a margin-deterioration signal, not manipulation. <b>Inconclusive, not clean.</b></li>
-  <li><b>Altman Z″ (non-manufacturer/EM, D):</b> TA Rs 14,326 cr; WC ≈ Rs 2,757 cr; reserves Rs 4,058 cr; EBIT(ex-OI) Rs 149 cr; book equity Rs 4,241 cr; total liabilities Rs 10,085 cr → Z″ = 6.56(0.192)+3.26(0.283)+6.72(0.0104)+1.05(0.42) ≈ <b>2.7</b> (≈2.9 incl. OI in EBIT). Zones: &gt;2.6 safe, 1.1–2.6 grey. Just inside "safe" — and mostly on working capital and book equity, not earnings power. Inputs approximate.</li>
-  <li><b>Cash conversion cycle:</b> GCA 651 days (FY25) vs 726 (FY24), expected to stay above 650; receivable days improved to 109 (FY26) from 176. Trend improving slightly, still structurally very heavy.</li>
-</ul>
-<table>
-<tr><th>Red flag</th><th>Severity</th></tr>
-<tr><td>Other income = 75% of PBT (FY26); 77% in Q4</td><td><span class="rate red">High</span></td></tr>
-<tr><td>Core ROCE 3.6%; EBITDA margin 9.2%</td><td><span class="rate red">High</span></td></tr>
-<tr><td>Rs 83 cr inventory &gt;5 yrs unprovided (EoM)</td><td><span class="rate amber">Medium</span></td></tr>
-<tr><td>Inventory +75% YoY</td><td><span class="rate amber">Medium</span></td></tr>
-<tr><td>FY25 onerous-contract + ECL provisions (~Rs 231 cr)</td><td><span class="rate amber">Medium</span></td></tr>
-<tr><td>GCA &gt;650 days working capital</td><td><span class="rate amber">Medium</span></td></tr>
-<tr><td>CST contingent liability Rs 213 cr</td><td><span class="rate amber">Low–Med</span></td></tr>
-</table>
-<p><span class="rate amber">AMBER</span> — no fraud or manipulation indicators in what I could compute, but the earnings-quality picture and unprovided inventory are material.</p>
-
-<h2 id="7-industrial-deep-dive">7 · Industrial deep-dive</h2>
-<ul>
-  <li><b>Order book / sales:</b> Rs 26,176 cr vs FY26 revenue Rs 2,442 cr = <b>10.7x</b>; vs TTM Rs 2,766 cr = ~9.5x — highest among Indian defence majors.</li>
-  <li><b>Order inflow trend:</b> Rs 6,668 cr (FY25) → <b>Rs 5,909 cr (FY26)</b> — inflow fell even as the order book rose.</li>
-  <li><b>Customer concentration:</b> MoD ~100%; only named non-MoD customer HAL (Rs 1,347.71 cr, Jun 2026). Top-5/10 split <span class="tag n">N</span>.</li>
-  <li><b>Execution record:</b> poor and repeated. FY26 revenue −27% on delivery-timeline shifts; Q4 FY26 −73% YoY; Q1 FY27 Rs 572 cr was 19.4% below Elara's estimate and less than half the ~Rs 1,300 cr brokers modelled from Akash alone. CRISIL warns of time/cost overruns and BDL's liability for damages on delayed DRDO modifications.</li>
-  <li><b>Capex-to-capacity:</b> capex modest (~Rs 180–200 cr/yr); new plants in progress; capacity-utilisation / revenue-per-unit-capacity <span class="tag n">N</span>.</li>
-  <li><b>Margin lock-in:</b> fixed-price "minimal profitability" contracts; no price-variation protection disclosed; higher bought-out/import content dilutes margin; import material consumed +164% in FY26.</li>
-  <li><b>Working-capital intensity of order book:</b> very high — GCA &gt;650 days.</li>
-  <li><b>Subsidy/policy dependence:</b> high and supportive — 75% of capital acquisition reserved for domestic industry.</li>
-</ul>
-<h3>Order realisation &amp; execution timeline</h3>
-<ul>
-  <li><b>Disclosed schedule:</b> ~Rs 15,000 cr FY27 order inflow and ~Rs 25,000 cr pipeline over 2–3 yrs; Elara expects the existing order book executed over 3–4 yrs. Company product-wise realisation schedule <span class="tag n">N</span>.</li>
-  <li><b>Realisation horizon (D):</b> 26,176 / 2,766 ≈ <b>9.5 yrs</b> at the current run-rate; ~5.5 yrs even on ICICI's FY27E revenue of Rs 4,786 cr.</li>
-  <li><b>Firm vs pipeline:</b> Rs 26,176 cr firm; Rs 15,000 cr FY27 pipeline and Rs 9,000–12,000 cr QRSAM share not yet contracted (CCS approval expected by Sep 2026).</li>
-  <li><b>Book-to-bill:</b> FY26 = 5,909/2,442 = <b>2.42x</b>; Q1 FY27 conversion only ~2.2% of order book.</li>
-  <li><b>Weighted-average execution period:</b> <span class="tag n">N</span>.</li>
-  <li><b>Slippage check:</b> FY25 AR guided Rs 20,000 cr of new orders over 2–3 yrs and healthy execution; FY26 delivered −27% revenue and lower inflow — a material guidance-vs-delivery gap.</li>
-  <li><b>Realisation risk line:</b> imported seeker/radar supply, DRDO technical-modification sign-off, and customer acceptance timing — all evidenced, none within BDL's control.</li>
-</ul>
-<p><span class="rate amber">AMBER (leaning RED)</span> — huge, genuine order book; but book-to-bill falling, conversion slow and slipping, fixed-price contracts, and gating items outside the company's control.</p>
-
-<h2 id="8-peer-comparison">8 · Peer comparison</h2>
-<p><b>Peers and justification:</b> BEL (closest analogue — defence PSU guided-weapon electronics, joint QRSAM partner); HAL (defence PSU platform/missile integrator, same MoD customer and order-book dynamic); Solar Industries (fastest-growing private defence competitor moving up the value chain); Astra Microwave (private missile/RF subsystems supplier, directly exposed to QRSAM and Astra); Data Patterns (the market's chosen high-multiple niche comparable).</p>
-<table>
-<tr><th>Company</th><th class="num">FY26 rev (Rs cr)</th><th class="num">FY26 PAT (Rs cr)</th><th class="num">EBITDA mgn</th><th class="num">ROCE</th><th class="num">Order book (Rs cr)</th><th class="num">OB/rev</th><th class="num">P/E</th><th class="num">D/E</th></tr>
-<tr><td><b>BDL</b></td><td class="num">2,442</td><td class="num">420</td><td class="num"><b>9.2%</b></td><td class="num">13.8%</td><td class="num">26,176</td><td class="num"><b>10.7x</b></td><td class="num"><b>~98x</b></td><td class="num">~0</td></tr>
-<tr><td>BEL</td><td class="num">27,610</td><td class="num">6,048</td><td class="num">~29%</td><td class="num">~36%</td><td class="num">73,882</td><td class="num">2.7x</td><td class="num">~45x</td><td class="num">~0</td></tr>
-<tr><td>HAL</td><td class="num">33,089</td><td class="num">9,116</td><td class="num">~30%</td><td class="num">~11–16%</td><td class="num">2,54,538</td><td class="num">~7.7x</td><td class="num">~32x</td><td class="num">~0</td></tr>
-<tr><td>Solar Industries</td><td class="num">9,838</td><td class="num">1,737</td><td class="num">27.9%</td><td class="num">high-20s%</td><td class="num">21,300</td><td class="num">2.2x</td><td class="num">high</td><td class="num">low</td></tr>
-<tr><td>Astra Microwave</td><td class="num">~1,100</td><td class="num">~110</td><td class="num">~28.7%</td><td class="num">~15–16%</td><td class="num">growing</td><td class="num">~2x</td><td class="num">~40x</td><td class="num">low</td></tr>
-<tr><td>Data Patterns</td><td class="num">~600–700</td><td class="num">–</td><td class="num">~mid-20s%</td><td class="num">–</td><td class="num">~1x rev</td><td class="num">~1x</td><td class="num">~65x (28E)</td><td class="num">low</td></tr>
-</table>
-<p>BDL has the <b>highest order-book coverage (10.7x)</b> but the <b>lowest margin (9.2%)</b> and one of the <b>highest valuations (~98x trailing P/E)</b> in the group. BEL earns 29% margins at 45x; HAL 30% at 32x. Peers' commentary is constructive on demand but discriminating on execution: BEL reaffirmed guidance contingent on QRSAM CCS approval; HAL guided 10–12% growth at 30–31% margins — both executing at scale while BDL repeatedly misses.</p>
-<p><span class="rate red">RED (relative)</span> — most expensive and least profitable name in its peer set; the premium is for an order book that has not converted.</p>
-
-<h2 id="9-variant-perception-evidence">9 · Variant perception evidence</h2>
-<p><b>What the market believes:</b> coverage is broad and split — 13 analysts, consensus "Neutral," average target Rs 1,331 (range Rs 1,050–1,610), 6 buys / 5 sells / 2 holds. Named calls: ICICI Buy Rs 1,585; DAM Buy Rs 1,415; Choice Buy Rs 1,500; Motilal Neutral Rs 1,270; Emkay Add Rs 1,350; Jefferies Hold Rs 1,280; Goldman Sell Rs 1,260; Elara Reduce Rs 1,360. Institutions have sold the float: FII holding fell from 3.77% (Jun-25) to 1.69% (Jun-26), while MF holding rose ~10.1%→11.5% but several active funds trimmed in Aug-2026. The stock is −27% over one year, near its 52-week low of Rs 1,048.</p>
-<p><b>What the market may be missing:</b> the one under-discussed point is earnings quality — ~75% of FY26 PBT is treasury income on customer advances, which <i>falls</i> as execution proceeds, so the modelled earnings recovery must come almost entirely from a core business earning a 3.6% return on capital. But this is a refinement of the bear case, not a distinct edge, and it points where the sellers already point.</p>
-<div class="callout danger"><b>NO VARIANT PERCEPTION.</b> I cannot construct an evidence-backed view that differs materially from the consensus range already debated by 13 analysts and priced into a stock down 27%. Bull (order-book ramp) and bear (execution slippage + thin, diluting margins) are both well-covered and both consistent with the data I opened. This is a hard stop → <b>Pass</b>.</div>
-<p><span class="rate red">RED — hard stop.</span></p>
-
-<h2 id="10-forward-model">10 · Forward model</h2>
-<p>All forward figures are assumptions (<span class="tag a">A</span>) built on the DATA PACK. Drivers: order-book conversion (revenue), product mix and bought-out content (margin), and the run-off of customer advances (other income).</p>
-<table>
-<tr><th>Scenario (prob)</th><th class="num">FY27E rev</th><th class="num">FY28E rev</th><th class="num">FY29E rev</th><th class="num">FY29E EBITDA mgn</th><th class="num">FY29E PAT</th><th class="num">FY29E EPS</th><th class="num">Target P/E</th><th class="num">Value/sh</th></tr>
-<tr><td><b>Bull (25%)</b> — ramp + QRSAM + exports, margin normalises</td><td class="num">5,000</td><td class="num">7,200</td><td class="num">9,500</td><td class="num">19%</td><td class="num">1,509</td><td class="num">41.2</td><td class="num">55x</td><td class="num">2,266</td></tr>
-<tr><td><b>Base (45%)</b> — ramp with slippage, partial margin recovery</td><td class="num">4,500</td><td class="num">6,300</td><td class="num">8,100</td><td class="num">16.5%</td><td class="num">1,138</td><td class="num">31.0</td><td class="num">38x</td><td class="num">1,178</td></tr>
-<tr><td><b>Bear (30%)</b> — execution stalls, margin stays thin</td><td class="num">3,000</td><td class="num">3,600</td><td class="num">4,300</td><td class="num">12%</td><td class="num">600</td><td class="num">16.4</td><td class="num">30x</td><td class="num">492</td></tr>
-</table>
-<p><b>Probability justification:</b> the record of guidance vs delivery over the last 8 quarters is poor (repeated slippage; FY26 −27%; Q1 FY27 ~19% below estimates), which caps bull at 25%; the 10.7x order-book coverage prevents bear from dominating and anchors base at 45%; the historical margin range (9–26%) and the fact that even the good FY25 execution year delivered only 14% EBITDA margin limit bull-case margin assumptions.</p>
-<p><b>Probability-weighted value ≈ 0.30(492) + 0.45(1,178) + 0.25(2,266) = Rs 1,245/sh</b> (+~10% vs Rs 1,125.90). <b>Probability of a 30%+ loss ≈ 30%</b> (the bear case, Rs 492, is −56%).</p>
-<p><b>Sensitivity (2 key drivers):</b> every 1ppt of FY29 EBITDA margin is worth ~Rs 22 cr of EBITDA (~Rs 16 cr PAT, ~Rs 0.44 EPS, ~Rs 17/sh at 38x); every Rs 1,000 cr of FY29 revenue at base margin is worth ~Rs 165 cr EBITDA (~Rs 123 cr PAT, ~Rs 3.35 EPS, ~Rs 127/sh at 38x). The model is dominated by the revenue-ramp and margin assumptions — both of which have missed historically.</p>
-<p><b>Reverse DCF:</b> at Rs 1,126, the market cap (Rs 41,271 cr) implies roughly FY29 PAT of ~Rs 1,050 cr at a normal 40x (undiscounted) — i.e., ~36% PAT CAGR from FY26. Demanding but not impossible; it requires the execution ramp largely to succeed, leaving little margin of safety if it slips.</p>
-
-<h2 id="11-valuation">11 · Valuation</h2>
-<table>
-<tr><th>Metric</th><th>BDL (13 Oct 2026)</th><th>Peer / history context</th></tr>
-<tr><td>P/E (FY26 trailing)</td><td>98x</td><td>Screener 77.9x on TTM EPS; peers 32–45x</td></tr>
-<tr><td>P/E (TTM)</td><td>~79x</td><td>Own 5-yr avg far lower</td></tr>
-<tr><td>P/B</td><td>~9.7x (BV Rs 116)</td><td>BEL 11.4x, HAL ~7x</td></tr>
-<tr><td>EV/EBITDA (FY26)</td><td>~180x</td><td>Absurd on trough EBITDA</td></tr>
-<tr><td>EV/EBITDA (FY27E)</td><td>~64x</td><td>Still premium</td></tr>
-<tr><td>EV/Sales</td><td>~16.5x (FY26); ~9x (FY27E)</td><td>Peers 3–8x</td></tr>
-<tr><td>Normalised (mid-cycle) P/E</td><td>~108x</td><td>Mid-cycle revenue ~Rs 3,500 cr, margin ~14%</td></tr>
-</table>
-<p><b>Margin of safety and payoff asymmetry:</b> the weighted value (~Rs 1,245) offers ~+10% upside against a bear case of −56% (30% probability). The required payoff — at least 2x upside versus a 30% downside — <b>FAILS</b>. Even on normalised mid-cycle earnings the stock trades at ~108x. The premium is a bet on flawless execution that the record does not support.</p>
-<p><span class="rate red">RED</span> — no margin of safety; asymmetry is adverse.</p>
-
-<h2 id="12-macro-and-policy-dependence">12 · Macro and policy dependence</h2>
-<ul>
-  <li><b>Rates:</b> negligible (debt-free; net interest income positive).</li>
-  <li><b>FX:</b> low–moderate — imports components under ToT and (per older CRISIL) does not hedge; import content is rising (+164% in FY26), so a weaker rupee adds cost.</li>
-  <li><b>Commodity inputs:</b> moderate — material consumption ~82% of revenue.</li>
-  <li><b>Government capex:</b> dominant. 75% of capital acquisition reserved for domestic industry; MoD budget +15.19% to Rs 7.85 lakh crore.</li>
-  <li><b>Incentive schemes:</b> supportive (Aatmanirbhar Bharat, domestic reservation, DRDO-industry programmes).</li>
-</ul>
-<p><b>% of thesis breaking if policy changes:</b> ~100% of the growth thesis is government-demand dependent. A reversal of the MoD capital budget trajectory or the domestic-reservation policy would break it entirely. In practice, MoD budgets are sticky and multi-year, so the more realistic policy risk is <i>timing</i> (CCS/approval delays), not reversal.</p>
-<p><span class="rate amber">AMBER</span> — policy is a tailwind, but the thesis has essentially no non-government demand leg.</p>
-
-<h2 id="13-market-structure-and-liquidity">13 · Market structure and liquidity</h2>
-<ul>
-  <li><b>ADV:</b> ~8–9 lakh shares/day (~Rs 90 cr); delivery ~35% of traded value (80th percentile of the last year).</li>
-  <li><b>Days to build/exit:</b> at 10–20% of ADV, a Rs 5 cr position is well under one day; a Rs 25 cr position ~1–2 days. Ample.</li>
-  <li><b>Free float:</b> 25.07% (promoter 74.93%); 560,750 shareholders; individuals ~11.85%.</li>
-  <li><b>Institutional trend (8 qtrs):</b> FII 3.77% (Jun-25) → 1.69% (Jun-26); DII ~9.45% → 11.53%; MF 10.1% → ~11.5%.</li>
-  <li><b>Bulk/block deals:</b> none since Oct 2022.</li>
-</ul>
-<p><span class="rate green">GREEN</span> — liquid, low concentration, no structural ownership risk. (Not a differentiator at position size 0.)</p>
-
-<h2 id="14-pre-mortem-and-kill-criteria">14 · Pre-mortem and kill criteria</h2>
-<p>Assume a 30%+ loss over two years. Top reasons, with probability and early-warning indicators:</p>
-<table>
-<tr><th>#</th><th>Reason for loss</th><th class="num">Prob</th><th>Early-warning indicator</th><th>Sell trigger</th></tr>
-<tr><td>1</td><td>Execution keeps slipping (imported seekers/radars, acceptance delays)</td><td class="num">35%</td><td>Q2/Q3 FY27 revenue below ~Rs 1,200–1,500 cr/quarter</td><td>Two consecutive quarters below the ramp trajectory</td></tr>
-<tr><td>2</td><td>Margin fails to recover (fixed-price + bought-out content)</td><td class="num">30%</td><td>EBITDA margin stuck &lt;12%</td><td>FY27 margin below 12%</td></tr>
-<tr><td>3</td><td>Earnings quality erodes as other income run-off exceeds operating growth</td><td class="num">25%</td><td>Other income &gt;70% of PBT for 2+ quarters while core profit flat</td><td>Core (ex-OI) PAT declines YoY</td></tr>
-<tr><td>4</td><td>De-rating from 98x as growth disappoints</td><td class="num">30%</td><td>Consensus FY28 EPS cuts &gt;15%</td><td>Two or more brokers cut target below Rs 1,000</td></tr>
-<tr><td>5</td><td>Governance/compliance recurrence; QRSAM slips beyond FY27</td><td class="num">15%</td><td>New exchange fines; CCS approval pushed to FY28</td><td>QRSAM not ordered by Q3 FY27</td></tr>
-</table>
-<p><b>Thesis break vs price volatility:</b> price volatility is a −10/15% drawdown on results timing; a thesis break is two consecutive quarters of sub-trajectory revenue <i>plus</i> margin stuck below 12% — that is when the 98x multiple is indefensible.</p>
-
-<h2 id="15-red-team-short-report">15 · Red-team short report</h2>
-<p><i>Written as a short seller would, using only evidenced filings, disclosures and news.</i></p>
-<p>BDL is priced as if the order book is money in the bank. It is not. The Rs 26,176 cr order book is 10.7x revenue, but BDL converted only ~2.2% of it in Q1 FY27 and its FY26 revenue <b>fell 27%</b> — the weakest year since FY21 — because a government customer moved delivery timelines. This is not a one-off: Q4 FY26 revenue fell 73% YoY, and Q1 FY27 revenue of Rs 572 cr came in ~19% below the most supportive broker estimate and less than half what the Street modelled from Akash alone. The pattern is chronic, and the gating items — imported seekers, radars, DRDO sign-offs, and MoD acceptance — are outside BDL's control.</p>
-<p>Second, the margin story is worse than the revenue story. EBITDA margin has collapsed from 22.7% (FY24) to 14.1% (FY25) to <b>9.2% (FY26)</b>. CRISIL states plainly that BDL bids on a "fixed-contract basis with minimal profitability, considering national interest," and Astra — the next growth driver — carries higher import content that dilutes margin as it scales. So even a successful revenue ramp may not produce the 15–17% margins the bulls assume.</p>
-<p>Third, the profit is not what it looks like. In FY26, <b>other income of Rs 424 cr was 74.6% of PBT</b> (77% in Q4 alone) — treasury income earned on customer advances. As execution accelerates, advances are consumed and this income falls. The core business, stripped of it, earns a <b>3.6% return on capital</b>. The company also carries <b>Rs 83 cr of inventory more than five years old with no provision</b>, contrary to its own policy — an item the auditor flagged as an emphasis of matter.</p>
-<p>Fourth, governance: BDL spent six months (Feb–Aug 2026) non-compliant with LODR board rules, drew exchange fines, and approved its Q1 FY27 accounts with <b>no functioning Audit Committee</b>. It is a government-company structural issue, but it is a real defect.</p>
-<p><b>What would make the short thesis fail:</b> a decisive Q2/Q3 FY27 revenue ramp (Rs 1,200–1,500 cr/quarter), QRSAM awarded and funded, margins recovering above 15%, and the export pipeline (Indonesia/Republikorp, Akash) converting. Any two of those would invalidate the short.</p>
-<p><b>Fair assessment:</b> the execution and earnings-quality arguments hold up on the filings; the governance point is real but curing; the "short" case is strongest on valuation and weakest on the order book, which genuinely exists and is uniquely large. On balance the evidence supports caution, not aggressive shorting.</p>
-
-<h2 id="16-monitoring-plan-and-decision-journal">16 · Monitoring plan and decision journal</h2>
-<table>
-<tr><th>Quarterly KPI</th><th>Model expectation (base)</th><th>Watch</th></tr>
-<tr><td>Revenue (standalone)</td><td>Q2 FY27 ~Rs 1,300–1,500 cr</td><td>&lt;Rs 1,000 cr = thesis stress</td></tr>
-<tr><td>EBITDA margin (ex-OI)</td><td>~13–14%</td><td>&lt;11% = margin thesis broken</td></tr>
-<tr><td>Order inflow</td><td>FY27 ~Rs 15,000 cr incl. QRSAM</td><td>QRSAM not awarded by Q3 FY27</td></tr>
-<tr><td>Other income / PBT</td><td>falling toward ~55–60%</td><td>&gt;70% with flat core profit</td></tr>
-<tr><td>Inventory</td><td>converting down from Rs 4,626 cr</td><td>further build without revenue</td></tr>
-<tr><td>Debt / net worth</td><td>remains debt-free</td><td>any leverage build</td></tr>
-</table>
-<p><b>Next results date:</b> Q2 FY27, due ~6 Nov 2026.</p>
-<p><b>Journal entry:</b> <i>Why I would buy</i> — the order book is unique (10.7x coverage) and a successful ramp could compound PAT ~35–40%. <i>Expected outcome</i> — base case ~+5–10% to a weighted Rs ~1,245. <i>What proves me wrong</i> — two consecutive quarters of on-trajectory revenue with margin &gt;15% and QRSAM awarded. <i>Review date</i> — after Q3 FY27 (Feb 2027). <i>Current stance</i> — Pass; revisit only if execution is demonstrated at a lower price.</p>
-
-<h2 id="17-source-log-contradictions-open-questions">17 · Source log, contradictions, open questions</h2>
-<h3>Primary sources (opened)</h3>
-<ul class="small">
-  <li>BDL Annual Report 2025-26 (02 Sep 2026) — bdl-india.in/sites/default/files/Annual-Report-2025-26.pdf</li>
-  <li>BDL Annual Report 2024-25 (03 Sep 2025) — bdl-india.in/sites/default/files/AnnualReport2024-25_1.pdf</li>
-  <li>BDL Q1 FY27 results + limited review (14 Aug 2026) — bdl-india.in/financial-results</li>
-  <li>BDL Q4/FY26 audited results (28 May 2026) — bdl-india.in/sites/default/files/BDL_25-26_Q4_FR.pdf</li>
-  <li>BDL Investor Presentation June 2026 (10 Jun 2026) — bdl-india.in/sites/default/files/Investors_Presentation_11062026.pdf</li>
-  <li>BDL Shareholding Patterns 30.06.2026, 31.03.2026, 31.12.2025 — bdl-india.in/shareholding-pattern</li>
-  <li>Exchange fine notices (qtr ended 31.03.2026 and 30.06.2026) — bdl-india.in</li>
-  <li>Integrated CG reports Q1 FY27 &amp; Q1 FY26 — bdl-india.in; nsearchives.nseindia.com</li>
-  <li>Board committee composition (17 Aug 2026) — bdl-india.in</li>
-  <li>CRISIL A1+ rationale (17 Feb 2026) — crisil.com</li>
-  <li>PIB Defence Budget 2026-27 (01–03 Feb 2026) — pib.gov.in</li>
-  <li>Screener BDL 10-yr financials (13 Oct 2026) — screener.in/company/BDL/</li>
-  <li>Fund Tracker India / Trendlyne — delivery, MF, bulk/block data</li>
-  <li>Broker notes: Motilal Oswal, ICICI Securities, Elara, Emkay, Jefferies, Goldman Sachs (via dsij.in, businessupturn.com, multibagg.ai, investing.com)</li>
-</ul>
-<h3>Contradictions</h3>
-<table>
-<tr><th>Item</th><th>Source A</th><th>Source B</th><th>Resolution</th></tr>
-<tr><td>FY26 cash &amp; equivalents</td><td>Q4 FR balance sheet: Rs 863 cr</td><td>CRISIL: ~Rs 4,200 cr (31 Dec 2025)</td><td>Different measures — CRISIL includes deposits/treasury float. Treated Rs 863 cr as the cash line [S].</td></tr>
-<tr><td>Q4 FY26 PAT</td><td>Own filing: Rs 113.18 cr</td><td>One aggregator reported Rs 275 cr and "consolidated"</td><td>Use the filing: standalone Rs 113.18 cr; aggregator error.</td></tr>
-<tr><td>QRSAM share to BDL</td><td>Daily Guardian: Rs 11,000–12,000 cr</td><td>Financial Express / Elara: ~Rs 9,000 cr</td><td>Range Rs 9,000–12,000 cr; not yet contracted.</td></tr>
-<tr><td>Trailing P/E</td><td>CNBC: 98.16x (FY26 EPS)</td><td>Screener: 77.9x (TTM EPS)</td><td>Both correct — different EPS bases (FY26 vs TTM).</td></tr>
-</table>
-<h3>Open questions / documents needed</h3>
-<ul>
-  <li>Full FY26 Annual Report PDF — to complete the Beneish inputs, accounting-policy scan and contingent-liability note (I opened only indexed snippets).</li>
-  <li>Any management commentary from the FY26 analyst meet — BDL publishes no concall transcripts, so no verbatim guidance could be quoted.</li>
-  <li>Product-wise revenue and capacity-utilisation disclosure — not available (segment-reporting exemption).</li>
-</ul>
-<h3>Channel checks still needed (3 questions each)</h3>
-<ul>
-  <li><b>MoD/DRDO procurement officials:</b> What is gating Akash/Astra acceptance? Is the imported seeker/radar supply chain resolving? When is QRSAM CCS approval realistically expected?</li>
-  <li><b>Suppliers (RF seekers, radars, propellants):</b> Are BDL order schedules firming? Is bought-out/import content rising as Astra scales? Any single-source bottlenecks?</li>
-  <li><b>Competitors (BEL, Astra, private missile entrants):</b> Is BDL losing share in competitively bid programmes? At what pricing? Is private participation changing the margin pool?</li>
-</ul>
-
-<h2 id="stage-3-final-audit-15-decision-critical-figures">Stage 3 · Final audit (15 decision-critical figures)</h2>
-<table>
-<tr><th>Figure</th><th>Value in report</th><th>Primary source / location</th><th>Second source</th><th>Tag</th><th>Match</th></tr>
-<tr><td>Latest PAT (FY26)</td><td>Rs 420.33 cr</td><td>Q4 FR / AR</td><td>Investor presentation</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>Latest PAT (Q1 FY27)</td><td>Rs 118.79 cr</td><td>Q1 FY27 filing</td><td>ET / Kotak</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>Total debt</td><td>~Rs 5 cr (nil)</td><td>Q4 FR</td><td>CRISIL "nil debt"</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>CFO (FY26)</td><td>Rs 604 cr</td><td>Screener</td><td>Q4 FR cash-flow (indirect)</td><td><span class="tag s">S</span></td><td>Consistent</td></tr>
-<tr><td>Promoter holding</td><td>74.93%</td><td>SHP 30.06.2026</td><td>SHP 31.03.2026</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>Pledge %</td><td>0%</td><td>SHP</td><td>Trendlyne</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>Order book (31 Mar 2026)</td><td>Rs 26,176 cr</td><td>Investor presentation</td><td>CRISIL (~Rs 26,000 cr)</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>Receivable days (FY26)</td><td>109</td><td>Investor presentation</td><td>AR (trade receivables Rs 727 cr)</td><td><span class="tag s">S</span></td><td>Consistent</td></tr>
-<tr><td>Current price</td><td>Rs 1,125.90 (13 Oct 2026)</td><td>CNBC TV18</td><td>Kotak / stockanalysis (intraday)</td><td><span class="tag s">S</span></td><td>Range Rs 1,107–1,126</td></tr>
-<tr><td>ROCE (FY26)</td><td>13.8% incl OI; 3.6% core</td><td>Screener 13.9%</td><td>Derived from capital employed</td><td><span class="tag d">D</span></td><td>Match (basis noted)</td></tr>
-<tr><td>Latest sales (FY26)</td><td>Rs 2,441.79 cr</td><td>Q4 FR / AR</td><td>Investor presentation</td><td><span class="tag v">V</span></td><td>Match</td></tr>
-<tr><td>Latest EBITDA (FY26)</td><td>Rs 225 cr (9.2%)</td><td>Screener</td><td>AR value-added reconciliation</td><td><span class="tag s">S</span></td><td>Consistent</td></tr>
-<tr><td>Key model driver — order book/revenue</td><td>10.7x</td><td>Derived</td><td>—</td><td><span class="tag d">D</span></td><td>Match</td></tr>
-<tr><td>M-score inputs (SGI/DSRI/GMI/TATA)</td><td>0.73 / 0.62 / 0.49 / −0.013</td><td>Derived from DATA PACK</td><td>—</td><td><span class="tag d">D</span></td><td>Full composite <span class="tag n">N</span></td></tr>
-<tr><td>Other income / PBT (FY26)</td><td>74.6%</td><td>Derived (Rs 424/Rs 568 cr)</td><td>AR other income Rs 424 cr</td><td><span class="tag d">D</span></td><td>Match</td></tr>
-</table>
-<p><b>Tag counts:</b> [V] 8 · [S] 5 · [D] 5 · [A] (model) ~10 · [N] 8. All three verdict-critical inputs (price, order book, earnings quality) are [V]/[S]/[D], none is [A]/[N]. No mismatches were found that changed the verdict. Corrected in-report: the FY26 cash figure (Rs 863 cr, not CRISIL's Rs 4,200 cr) and the Q4 FY26 PAT (Rs 113.18 cr, not an aggregator's Rs 275 cr).</p>
-
-<h2 id="what-would-change-my-mind">What would change my mind</h2>
-<ol>
-  <li>Two consecutive quarters of on-trajectory revenue (Rs 1,200–1,500 cr/quarter) — evidence the ramp is real, not projected.</li>
-  <li>EBITDA margin recovering above 15% with core (ex-other-income) profit growing — evidence the margin thesis is not structural.</li>
-  <li>QRSAM (Rs 9,000–12,000 cr to BDL) awarded and funded, plus a large export order — evidence the pipeline converts.</li>
-  <li>A price that offers 2x upside versus a 30% downside — the current asymmetry fails.</li>
-  <li>A differentiated, evidence-backed edge over the split consensus — currently absent, which is why this is a Pass and not a Buy.</li>
-</ol>
+<h2 style="margin-top:30px">Coming next</h2>
+<div class="empty">
+  New reports are added here as they are published — each gets its own page under <code>reports/&lt;ticker&gt;/</code> and a card above. Nothing else is listed yet.
+</div>
 
 <footer>
-  <p><b>VERIDIAN</b> · Institutional equity research · Indian listed markets. This document is a research opinion, not investment advice. Figures carry confidence tags: <span class="tag v">V</span> verified in two sources, <span class="tag s">S</span> single source, <span class="tag d">D</span> derived, <span class="tag a">A</span> assumption, <span class="tag n">N</span> not available. Basis: standalone unless stated; FY = April–March. Prepared 13 October 2026. Not a solicitation to buy or sell.</p>
+  <p><b>VERIDIAN</b> · Institutional equity research. Reports are research opinions, not investment advice. Verdicts and figures carry confidence tags (V/S/D/A/N) within each report. Prepared for the account owner; not a solicitation to buy or sell.</p>
 </footer>
 
 </div>
